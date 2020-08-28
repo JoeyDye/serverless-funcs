@@ -1,6 +1,4 @@
-exports.handler = async () => {
-  return {
-    statusCode: 200,
-    body: 'Boop again',
-  }
-}
+exports.handler = async () => ({
+  statusCode: 200,
+  body: 'Boop again',
+})
