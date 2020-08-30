@@ -1,8 +1,19 @@
 const { URL } = require('url')
 const fetch = require('node-fetch')
-const movies = require('../data/movies.json')
+const { query } = require('./utils/hasura')
 
 exports.handler = async () => {
+  const GET_MOVIES = `
+    query GetMovies {
+        movies {
+          id
+          poster
+          tagline
+          title
+        }
+      }
+  `
+  const { movies } = await query({ query: GET_MOVIES })
   const api = new URL('https://www.omdbapi.com/')
   const { searchParams } = api
 
